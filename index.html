@@ -309,6 +309,21 @@ section{
 @media (max-width: 768px){
     @media (max-width: 768px){
 @media (max-width: 768px){
+ .logo{
+    font-size:0 !important;
+    width:42px !important;
+    height:42px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    overflow:hidden !important;
+}
+
+.logo::after{
+    content:"C";
+    font-size:24px !important;
+    font-weight:900 !important;
+}   
 .logo{
     font-size:18px !important;
     white-space:nowrap !important;

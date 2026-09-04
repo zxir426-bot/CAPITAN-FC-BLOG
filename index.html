@@ -159,24 +159,43 @@ body:after{background:#a855f7;right:-130px;bottom:-100px;animation:lightTwo 13s 
     db
   };
 
-  console.log("🔥 CAPITAN FC — Firebase connected successfully!");
-</script><script type="module">
+  console.log("🔥<!-- CAPITAN FC — Firebase + Firestore News -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
   import {
+    getFirestore,
     collection,
     getDocs
   } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-  const db = window.CAPITAN_FIREBASE.db;
+  const firebaseConfig = {
+    apiKey: "AIzaSyCU2T7vWn2hNt32Ftnhg8Br0ahIWHzEGf0",
+    authDomain: "capitan-fc.firebaseapp.com",
+    projectId: "capitan-fc",
+    storageBucket: "capitan-fc.firebasestorage.app",
+    messagingSenderId: "826851160437",
+    appId: "1:826851160437:web:ea58daec932978b547a33c",
+    measurementId: "G-5V035YBGVQ"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
   async function loadCapitanNews() {
     try {
       const snapshot = await getDocs(collection(db, "news"));
 
+      if (snapshot.empty) {
+        console.log("📰 No news found.");
+        return;
+      }
+
+      console.log("✅ CAPITAN FC news loaded:", snapshot.size);
+
       snapshot.forEach((doc) => {
-        console.log("📰 CAPITAN FC News:", doc.data());
+        console.log("📰", doc.id, doc.data());
       });
 
-      console.log("✅ Firestore news loaded successfully!");
     } catch (error) {
       console.error("❌ Firestore error:", error);
     }

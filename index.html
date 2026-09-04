@@ -5,208 +5,534 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="وب‌سایت رسمی CAPITAN FC؛ اخبار، مسابقات، بازیکنان، افتخارات و رسانه باشگاه.">
 <title>CAPITAN FC | وب‌سایت رسمی باشگاه</title>
+
 <style>
-:root{--bg:#08090c;--card:#11141a;--card2:#171b22;--text:#f5f7fa;--muted:#9aa3af;--gold:#e7b84b;--line:#242a33}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 80% -10%,#263044 0,#08090c 35%);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.8}
-a{text-decoration:none;color:inherit}.container{width:min(1120px,92%);margin:auto}
-header{position:sticky;top:0;z-index:20;background:rgba(8,9,12,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.5px}.logo{width:44px;height:44px;border:2px solid var(--gold);display:grid;place-items:center;border-radius:13px;font-size:22px;font-weight:900;color:var(--gold);box-shadow:0 0 25px #e7b84b22}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2px}
-nav{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:#d9dde4}nav a:hover{color:var(--gold)}
-.hero{padding:90px 0 55px;position:relative;overflow:hidden}.hero:after{content:"CAPITAN";position:absolute;left:-50px;top:25px;font-size:150px;font-weight:900;color:#ffffff03;pointer-events:none}
-.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}.eyebrow{color:var(--gold);font-weight:800;font-size:13px;letter-spacing:2px}.hero h1{font-size:clamp(42px,8vw,78px);line-height:1;margin:15px 0}.hero p{color:var(--muted);max-width:650px}.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.btn{padding:11px 18px;border-radius:12px;border:1px solid var(--line);background:var(--card);font-weight:700}.btn.primary{background:var(--gold);color:#111;border-color:var(--gold)}
-.hero-card{background:linear-gradient(145deg,#1a2029,#0d0f14);border:1px solid var(--line);border-radius:25px;padding:28px;box-shadow:0 25px 70px #0008}.crest{width:115px;height:115px;border:3px solid var(--gold);border-radius:30px;display:grid;place-items:center;font-size:55px;color:var(--gold);margin-bottom:20px}.hero-card h3{margin:0 0 4px}.muted{color:var(--muted)}
-section{padding:55px 0}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:22px}.section-head h2{margin:0;font-size:28px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:18px;padding:20px}.tag{display:inline-block;color:var(--gold);font-size:11px;font-weight:800;margin-bottom:8px}.card h3{margin:5px 0 8px;font-size:18px}.card p{color:var(--muted);font-size:13px;margin:0}.match{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;text-align:center;gap:15px}.team{font-weight:900;font-size:17px}.score{font-size:30px;font-weight:900;color:var(--gold)}.date{font-size:11px;color:var(--muted)}
-.players{grid-template-columns:repeat(4,1fr)}.player{text-align:center;padding:18px}.avatar{width:72px;height:72px;border-radius:50%;margin:0 auto 12px;background:#202632;border:1px solid #343b47;display:grid;place-items:center;font-weight:900;color:var(--gold);font-size:20px}.number{color:var(--muted);font-size:12px}
-.trophies{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.trophy{text-align:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:25px}.cup{font-size:40px}.trophy strong{display:block;margin-top:5px}
-.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.photo{height:170px;border-radius:16px;border:1px solid var(--line);background:linear-gradient(135deg,#222833,#0e1015);display:grid;place-items:center;color:#687180;font-size:12px}
-.news{display:grid;grid-template-columns:2fr 1fr;gap:18px}.featured{min-height:230px;display:flex;flex-direction:column;justify-content:end;background:linear-gradient(145deg,#202733,#0d0f14)}footer{border-top:1px solid var(--line);padding:35px 0;color:var(--muted);font-size:12px}.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-@media(max-width:800px){.hero-grid,.news{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.players{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}nav{display:none}}
-@media(max-width:500px){.grid,.players,.trophies{grid-template-columns:1fr}.hero{padding-top:55px}.hero-card{padding:20px}.gallery{grid-template-columns:1fr 1fr}.photo{height:130px}}
-
-/* CAPITAN FC premium motion + interactions */
-html,body{min-height:100%;background:#08090c}
-body{position:relative;isolation:isolate;background:
- radial-gradient(circle at 12% 18%,rgba(59,130,246,.22),transparent 24%),
- radial-gradient(circle at 86% 20%,rgba(168,85,247,.18),transparent 25%),
- radial-gradient(circle at 52% 88%,rgba(16,185,129,.14),transparent 26%),
- linear-gradient(-45deg,#08090c,#101827,#0b1210,#17101f);
- background-size:180% 180%,180% 180%,180% 180%,400% 400%;
- animation:auroraBackground 14s ease-in-out infinite alternate}
-body:before,body:after{content:"";position:fixed;width:430px;height:430px;border-radius:50%;filter:blur(100px);opacity:.18;pointer-events:none;z-index:-1;mix-blend-mode:screen}
-body:before{background:#3b82f6;top:-90px;left:-120px;animation:lightOne 11s ease-in-out infinite alternate}
-body:after{background:#a855f7;right:-130px;bottom:-100px;animation:lightTwo 13s ease-in-out infinite alternate}
-@keyframes auroraBackground{0%{background-position:0% 50%,100% 0%,30% 100%,0% 50%}50%{background-position:100% 20%,0% 70%,80% 20%,100% 50%}100%{background-position:20% 100%,80% 20%,20% 50%,0% 50%}}
-@keyframes lightOne{0%{transform:translate(-30px,20px) scale(.85)}35%{transform:translate(180px,100px) scale(1.15)}70%{transform:translate(80px,300px) scale(1.05)}100%{transform:translate(360px,120px) scale(1.25)}}
-@keyframes lightTwo{0%{transform:translate(40px,-30px) scale(1)}35%{transform:translate(-170px,-180px) scale(1.2)}70%{transform:translate(-40px,-300px) scale(.9)}100%{transform:translate(-280px,-80px) scale(1.25)}}
-.btn,.card,.logo,.hero-card,.trophy,.photo{transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease,background .28s ease}
-.btn:hover{color:#111;background:linear-gradient(90deg,var(--gold),#fff1a8);border-color:var(--gold);box-shadow:0 0 28px #e7b84b55;transform:translateY(-2px)}
-.btn:not(.primary):hover{color:var(--gold);background:var(--card2)}
-.card:hover,.trophy:hover,.photo:hover{border-color:#e7b84b66;box-shadow:0 0 30px #e7b84b18;transform:translateY(-3px)}
-.logo{animation:logoGlow 3s ease-in-out infinite alternate}@keyframes logoGlow{to{box-shadow:0 0 35px #e7b84b55}}
-.like-btn{border:0;background:transparent;font-size:25px;cursor:pointer;line-height:1;padding:5px 8px;color:#fff;transition:transform .18s ease,filter .18s ease}.like-btn.liked{color:#ff304f;filter:drop-shadow(0 0 8px #ff304f66)}.like-btn.pop{animation:heartPop .35s ease}@keyframes heartPop{0%{transform:scale(1)}45%{transform:scale(1.35)}100%{transform:scale(1)}}
-.news-card-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.media-link{display:flex;align-items:center;justify-content:center;height:100%;width:100%;color:var(--gold);font-weight:800}
-.sound-toggle{position:fixed;left:16px;bottom:16px;z-index:30;border:1px solid var(--line);background:rgba(17,20,26,.9);color:var(--text);border-radius:999px;padding:9px 13px;cursor:pointer;backdrop-filter:blur(10px)}
-@media(max-width:500px){.sound-toggle{left:10px;bottom:10px;font-size:12px}.hero h1{font-size:44px}}
-</style>
-</head>
-<body>
-<header><div class="container nav">
-<a class="brand" href="#home"><div class="logo">C</div><div>CAPITAN FC<small>OFFICIAL CLUB</small></div></a>
-<nav><a href="#news">اخبار</a><a href="#matches">مسابقات</a><a href="#players">بازیکنان</a><a href="#trophies">افتخارات</a><a href="#media">رسانه</a><a href="#history">تاریخچه</a><a href="#contact">ارتباط</a></nav>
-</div></header>
-
-<main id="home">
-<section class="hero"><div class="container hero-grid">
-<div><div class="eyebrow">CAPITAN FOOTBALL CLUB</div><h1>کاپیتان،<br>بیشتر از یک تیم.</h1><p>وب‌سایت رسمی CAPITAN FC؛ مرجع اخبار، مسابقات، بازیکنان و افتخارات باشگاه در FC27.</p>
-<div class="buttons"><a class="btn primary" href="#matches">مشاهده مسابقات</a><a class="btn" href="#players">تیم ما</a></div></div>
-<div class="hero-card"><div class="crest">C</div><h3>CAPITAN FC</h3><div class="muted">OFFICIAL CLUB WEBSITE</div><hr style="border:0;border-top:1px solid var(--line);margin:20px 0"><div class="match"><div><div class="team">CAPITAN</div><div class="date">HOME</div></div><div class="score">VS</div><div><div class="team">—</div><div class="date">AWAY</div></div></div></div>
-</div></div></section>
-
-<section id="news"><div class="container"><div class="section-head"><h2>📰 آخرین اخبار</h2><span class="muted">NEWS</span></div>
-<div class="news" id="newsContainer">
-  <div class="card news-item" style="grid-column:1/-1;text-align:center;padding:30px;">
-    <span class="tag">NEWS</span>
-    <h3>📰 در حال بارگذاری آخرین اخبار...</h3>
-    <p>لطفاً چند لحظه صبر کنید.</p>
-  </div>
-</div>
-</div></section>
-
-<section id="matches"><div class="container"><div class="section-head"><h2>⚽ مسابقات</h2><span class="muted">MATCH CENTER</span></div>
-<div class="grid">
-<div class="card"><span class="tag">آخرین بازی</span><div class="match"><div class="team">CAPITAN FC</div><div class="score">—</div><div class="team">—</div></div><p class="date">بازی آخر مشخص نشده است.</p></div>
-<div class="card"><span class="tag">بازی بعدی</span><div class="match"><div class="team">CAPITAN FC</div><div class="score">VS</div><div class="team">—</div></div><p class="date">بازی بعدی مشخص نشده است.</p></div>
-<div class="card"><span class="tag">استادیوم</span><h3>BEHBAHAN</h3><p>محل برگزاری مسابقات خانگی CAPITAN FC.</p></div>
-</div></div></section>
-
-<section id="players"><div class="container"><div class="section-head"><h2>👥 بازیکنان</h2><span class="muted">SQUAD</span></div>
-<div class="card" style="margin-bottom:18px;text-align:center"><span class="tag">TEAM CAPTAIN</span><h3 style="font-size:25px;margin:4px 0">ARYAN</h3><p>کاپیتان رسمی CAPITAN FC</p></div>
-<div class="grid players">
-<div class="card player"><div class="avatar">S</div><strong>SINA</strong><div class="number">PLAYER</div></div>
-<div class="card player"><div class="avatar">M</div><strong>MEHDI</strong><div class="number">PLAYER</div></div>
-<div class="card player"><div class="avatar">R</div><strong>REZAAB</strong><div class="number">PLAYER</div></div>
-<div class="card player"><div class="avatar">P</div><strong>PARHAM</strong><div class="number">PLAYER</div></div>
-<div class="card player"><div class="avatar">A</div><strong>AMIRBEIK</strong><div class="number">PLAYER</div></div>
-<div class="card player"><div class="avatar">A</div><strong>AHMAD</strong><div class="number">PLAYER</div></div>
-<div class="card player"><div class="avatar">M</div><strong>MOHAMMAD</strong><div class="number">PLAYER</div></div>
-<div class="card player"><div class="avatar">R</div><strong>REZACR7</strong><div class="number">PLAYER</div></div>
-<div class="card player"><div class="avatar">R</div><strong>RASTIN</strong><div class="number">PLAYER</div></div>
-<div class="card player"><div class="avatar">A</div><strong>AMIN</strong><div class="number">PLAYER</div></div>
-</div></div></section>
-
-<section id="trophies"><div class="container"><div class="section-head"><h2>🏆 افتخارات</h2><span class="muted">HONOURS</span></div>
-<div class="trophies">
-<div class="trophy"><div class="cup">🏅</div><strong>جوایز فردی</strong><span class="muted">INDIVIDUAL AWARDS</span></div>
-</div></div></section>
-
-<section id="media"><div class="container"><div class="section-head"><h2>🎥 رسانه و گالری</h2><span class="muted">MEDIA</span></div>
-<div class="gallery">
-<a class="photo" href="https://t.me/Capitan_Fc/139" target="_blank" rel="noopener noreferrer"><span class="media-link">▶ HIGHLIGHTS 01</span></a>
-<a class="photo" href="https://t.me/Capitan_Fc/149" target="_blank" rel="noopener noreferrer"><span class="media-link">▶ HIGHLIGHTS 02</span></a>
-<a class="photo" href="https://t.me/Capitan_Fc/156" target="_blank" rel="noopener noreferrer"><span class="media-link">▶ HIGHLIGHTS 03</span></a>
-<a class="photo" href="https://t.me/Capitan_Fc/165" target="_blank" rel="noopener noreferrer"><span class="media-link">▶ HIGHLIGHTS 04</span></a>
-</div>
-<p class="muted" style="margin-top:15px">هایلایت‌های رسمی تیم CAPITAN FC</p></div></section>
-
-<section id="history"><div class="container"><div class="section-head"><h2>📖 تاریخچه باشگاه</h2><span class="muted">HISTORY</span></div>
-<div class="card"><p>CAPITAN FC با هدف ساختن یک تیم رقابتی، منظم و متحد شکل گرفته است. این باشگاه تاکنون <strong style="color:var(--gold)">۷ قهرمانی و ۱ نایب‌قهرمانی</strong> در کارنامه خود ثبت کرده است.</p><div class="trophies" style="margin-top:22px"><div class="trophy"><div class="cup">🥈</div><strong>Pcl Nxt</strong></div><div class="trophy"><div class="cup">🥇</div><strong>Nexus Cup</strong></div><div class="trophy"><div class="cup">🥇</div><strong>Perimermaxi</strong></div><div class="trophy"><div class="cup">🥇</div><strong>MAXICLUBS</strong></div><div class="trophy"><div class="cup">🥇</div><strong>SUPERCUP</strong></div><div class="trophy"><div class="cup">🥇</div><strong>JUJITSU CUP</strong></div><div class="trophy"><div class="cup">🥇</div><strong>TAJ CUP</strong></div><div class="trophy"><div class="cup">🥇</div><strong>SHADOW CUP</strong></div></div></div></div></section>
-
-<section id="contact"><div class="container"><div class="section-head"><h2>📢 ارتباط با باشگاه</h2><span class="muted">CONTACT</span></div>
-<div class="grid"><div class="card"><span class="tag">OFFICIAL</span><h3>کانال خبری تلگرام</h3><p>آخرین اخبار، مسابقات و اطلاعیه‌های رسمی CAPITAN FC</p><div class="buttons" style="margin-top:15px"><a class="btn primary" href="https://t.me/Capitan_Fc" target="_blank" rel="noopener noreferrer">ورود به کانال</a></div></div><div class="card"><span class="tag">JOIN</span><h3>عضویت / تست بازیکن</h3><p><strong style="color:var(--text)">شرایط حضور الزامی:</strong><br>۱_ تک کلابی بودن<br>۲_ بانظم بودن<br>۳_ گیم پلی خوب<br>۴_ داشتن ذهنیت تیمی و تاکتیک پذیری<br><br>از گلر تا مهاجم در تمام پست ها پلیر خوب میپذیریم.</p></div><div class="card"><span class="tag">ADMIN</span><h3>مدیریت باشگاه</h3><p>کاپیتان تیم: <a href="https://t.me/CapitanFc_Admin" target="_blank" rel="noopener noreferrer" style="color:var(--gold);font-weight:800">@CapitanFc_Admin</a></p></div></div></div></section>
-</main>
-
-<footer><div class="container footer-row"><div><strong style="color:var(--text)">CAPITAN FC</strong><br>OFFICIAL CLUB WEBSITE</div><div>© 2026 CAPITAN FC • All rights reserved.</div></div></footer>
-<button class="sound-toggle" id="soundToggle" type="button">🔊 صدا: روشن</button>
-<script>
-(function(){
- const toggle=document.getElementById('soundToggle'); let soundOn=true;
- const AudioCtx=window.AudioContext||window.webkitAudioContext; let ctx;
- function beep(freq,duration,volume=0.025){if(!soundOn||!AudioCtx)return; try{ctx=ctx||new AudioCtx(); const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=freq;o.type='sine';g.gain.setValueAtTime(volume,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+duration);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+duration)}catch(e){}}
- toggle.addEventListener('click',()=>{soundOn=!soundOn;toggle.textContent=soundOn?'🔊 صدا: روشن':'🔇 صدا: خاموش'; if(soundOn)beep(700,.08,.03)});
- document.querySelectorAll('a,button,[role="button"],input,select,summary').forEach(el=>{
-   if(el===toggle || el.classList.contains('like-btn')) return;
-   el.addEventListener('click',()=>beep(520,.07,.028),{passive:true});
- });
- document.querySelectorAll('.like-btn').forEach(btn=>btn.addEventListener('click',()=>{btn.classList.toggle('liked');btn.classList.remove('pop');void btn.offsetWidth;btn.classList.add('pop');btn.textContent=btn.classList.contains('liked')?'❤️':'🤍';beep(760,.09,.035)}));
- const trophy=document.querySelector('#trophies'); if(trophy)trophy.addEventListener('click',()=>beep(880,.16,.035));
-})();
-</script>
-<!-- CAPITAN FC — Firebase + Firestore News -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-  import {
-    getFirestore,
-    collection,
-    getDocs
-  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyCU2T7vWn2hNt32Ftnhg8Br0ahIWHzEGf0",
-    authDomain: "capitan-fc.firebaseapp.com",
-    projectId: "capitan-fc",
-    storageBucket: "capitan-fc.firebasestorage.app",
-    messagingSenderId: "826851160437",
-    appId: "1:826851160437:web:ea58daec932978b547a33c",
-    measurementId: "G-5V035YBGVQ"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  async function loadCapitanNews() {
-    try {
-      const snapshot = await getDocs(collection(db, "news"));
-
-      if (snapshot.empty) {
-        console.log("📰 No news found.");
-        return;
-      }
-
-      console.log("✅ CAPITAN FC news loaded:", snapshot.size);
-
-      snapshot.forEach((doc) => {
-        console.log("📰", doc.id, doc.data());
-      });
-
-    } catch (error) {
-      console.error("❌ Firestore error:", error);
-    }
-  }
-
-  loadCapitanNews();
-
-async function showCapitanNews() {
-  const container = document.getElementById("newsContainer");
-
-  if (!container) return;
-
-  try {
-    const snapshot = await getDocs(collection(db, "news"));
-
-    container.innerHTML = "";
-
-    snapshot.forEach((doc) => {
-      const news = doc.data();
-
-      const card = document.createElement("article");
-      card.className = "card news-item";
-
-      card.innerHTML = `
-        <div class="news-card-head">
-          <span class="tag">${news.tag || "اخبار باشگاه"}</span>
-          <button class="like-btn" aria-label="لایک خبر">🤍</button>
-        </div>
-        <h3>${news.title || "بدون عنوان"}</h3>
-        <p>${news.text || ""}</p>
-      `;
-
-      container.appendChild(card);
-    });
-
-  } catch (error) {
-    console.error("❌ News display error:", error);
-  }
+:root{
+--bg:#08090c;
+--card:#11141a;
+--card2:#171b22;
+--text:#f5f7fa;
+--muted:#9aa3af;
+--gold:#e7b84b;
+--line:#242a33
 }
 
-showCapitanNews();
-</script></body></html>
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+margin:0;
+background:#08090c;
+color:var(--text);
+font-family:Tahoma,Arial,sans-serif;
+line-height:1.8;
+position:relative;
+isolation:isolate;
+background:
+radial-gradient(circle at 12% 18%,rgba(59,130,246,.22),transparent 24%),
+radial-gradient(circle at 86% 20%,rgba(168,85,247,.18),transparent 25%),
+radial-gradient(circle at 52% 88%,rgba(16,185,129,.14),transparent 26%),
+linear-gradient(-45deg,#08090c,#101827,#0b1210,#17101f);
+background-size:180% 180%,180% 180%,180% 180%,400% 400%;
+animation:auroraBackground 14s ease-in-out infinite alternate
+}
+
+a{text-decoration:none;color:inherit}
+
+.container{
+width:min(1120px,92%);
+margin:auto
+}
+
+header{
+position:sticky;
+top:0;
+z-index:20;
+background:rgba(8,9,12,.86);
+backdrop-filter:blur(14px);
+border-bottom:1px solid var(--line)
+}
+
+.nav{
+height:72px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:12px;
+font-weight:900;
+letter-spacing:.5px
+}
+
+.logo{
+width:44px;
+height:44px;
+border:2px solid var(--gold);
+display:grid;
+place-items:center;
+border-radius:13px;
+font-size:22px;
+font-weight:900;
+color:var(--gold);
+box-shadow:0 0 25px #e7b84b22
+}
+
+.brand small{
+display:block;
+color:var(--muted);
+font-size:10px;
+letter-spacing:2px
+}
+
+nav{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+font-size:13px;
+color:#d9dde4
+}
+
+nav a:hover{color:var(--gold)}
+
+.hero{
+padding:90px 0 55px;
+position:relative;
+overflow:hidden
+}
+
+.hero:after{
+content:"CAPITAN";
+position:absolute;
+left:-50px;
+top:25px;
+font-size:150px;
+font-weight:900;
+color:#ffffff03;
+pointer-events:none
+}
+
+.hero-grid{
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:30px;
+align-items:center
+}
+
+.eyebrow{
+color:var(--gold);
+font-weight:800;
+font-size:13px;
+letter-spacing:2px
+}
+
+.hero h1{
+font-size:clamp(42px,8vw,78px);
+line-height:1;
+margin:15px 0
+}
+
+.hero p{
+color:var(--muted);
+max-width:650px
+}
+
+.buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:25px
+}
+
+.btn{
+padding:11px 18px;
+border-radius:12px;
+border:1px solid var(--line);
+background:var(--card);
+font-weight:700
+}
+
+.btn.primary{
+background:var(--gold);
+color:#111;
+border-color:var(--gold)
+}
+
+.hero-card{
+background:linear-gradient(145deg,#1a2029,#0d0f14);
+border:1px solid var(--line);
+border-radius:25px;
+padding:28px;
+box-shadow:0 25px 70px #0008
+}
+
+.crest{
+width:115px;
+height:115px;
+border:3px solid var(--gold);
+border-radius:30px;
+display:grid;
+place-items:center;
+font-size:55px;
+color:var(--gold);
+margin-bottom:20px
+}
+
+.hero-card h3{
+margin:0 0 4px
+}
+
+.muted{color:var(--muted)}
+
+section{padding:55px 0}
+
+.section-head{
+display:flex;
+justify-content:space-between;
+align-items:end;
+margin-bottom:22px
+}
+
+.section-head h2{
+margin:0;
+font-size:28px
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px
+}
+
+.card{
+background:linear-gradient(180deg,var(--card2),var(--card));
+border:1px solid var(--line);
+border-radius:18px;
+padding:20px
+}
+
+.tag{
+display:inline-block;
+color:var(--gold);
+font-size:11px;
+font-weight:800;
+margin-bottom:8px
+}
+
+.card h3{
+margin:5px 0 8px;
+font-size:18px
+}
+
+.card p{
+color:var(--muted);
+font-size:13px;
+margin:0
+}
+
+.match{
+display:grid;
+grid-template-columns:1fr auto 1fr;
+align-items:center;
+text-align:center;
+gap:15px
+}
+
+.team{
+font-weight:900;
+font-size:17px
+}
+
+.score{
+font-size:30px;
+font-weight:900;
+color:var(--gold)
+}
+
+.date{
+font-size:11px;
+color:var(--muted)
+}
+
+.players{
+grid-template-columns:repeat(4,1fr)
+}
+
+.player{
+text-align:center;
+padding:18px
+}
+
+.avatar{
+width:72px;
+height:72px;
+border-radius:50%;
+margin:0 auto 12px;
+background:#202632;
+border:1px solid #343b47;
+display:grid;
+place-items:center;
+font-weight:900;
+color:var(--gold);
+font-size:20px
+}
+
+.number{
+color:var(--muted);
+font-size:12px
+}
+
+.trophies{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px
+}
+
+.trophy{
+text-align:center;
+background:var(--card);
+border:1px solid var(--line);
+border-radius:18px;
+padding:25px
+}
+
+.cup{font-size:40px}
+
+.trophy strong{
+display:block;
+margin-top:5px
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px
+}
+
+.photo{
+height:170px;
+border-radius:16px;
+border:1px solid var(--line);
+background:linear-gradient(135deg,#222833,#0e1015);
+display:grid;
+place-items:center;
+color:#687180;
+font-size:12px;
+overflow:hidden
+}
+
+.photo img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.news{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:18px
+}
+
+.news-item{
+min-height:150px
+}
+
+.featured{
+min-height:230px;
+display:flex;
+flex-direction:column;
+justify-content:end;
+background:linear-gradient(145deg,#202733,#0d0f14)
+}
+
+.news-card-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:12px
+}
+
+.like-btn{
+border:0;
+background:transparent;
+font-size:25px;
+cursor:pointer;
+line-height:1;
+padding:5px 8px;
+color:#fff;
+transition:transform .18s ease,filter .18s ease
+}
+
+.like-btn.liked{
+color:#ff304f;
+filter:drop-shadow(0 0 8px #ff304f66)
+}
+
+.like-btn.pop{
+animation:heartPop .35s ease
+}
+
+.media-link{
+display:flex;
+align-items:center;
+justify-content:center;
+height:100%;
+width:100%;
+color:var(--gold);
+font-weight:800
+}
+
+.sound-toggle{
+position:fixed;
+left:16px;
+bottom:16px;
+z-index:30;
+border:1px solid var(--line);
+background:rgba(17,20,26,.9);
+color:var(--text);
+border-radius:999px;
+padding:9px 13px;
+cursor:pointer;
+backdrop-filter:blur(10px)
+}
+
+footer{
+border-top:1px solid var(--line);
+padding:35px 0;
+color:var(--muted);
+font-size:12px
+}
+
+.footer-row{
+display:flex;
+justify-content:space-between;
+gap:20px;
+flex-wrap:wrap
+}
+
+.empty{
+grid-column:1/-1;
+text-align:center;
+padding:30px;
+color:var(--muted)
+}
+
+@keyframes auroraBackground{
+0%{
+background-position:0% 50%,100% 0%,30% 100%,0% 50%
+}
+50%{
+background-position:100% 20%,0% 70%,80% 20%,100% 50%
+}
+100%{
+background-position:20% 100%,80% 20%,20% 50%,0% 50%
+}
+}
+
+@keyframes heartPop{
+0%{transform:scale(1)}
+45%{transform:scale(1.35)}
+100%{transform:scale(1)}
+}
+
+@keyframes logoGlow{
+to{box-shadow:0 0 35px #e7b84b55}
+}
+
+body:before,
+body:after{
+content:"";
+position:fixed;
+width:430px;
+height:430px;
+border-radius:50%;
+filter:blur(100px);
+opacity:.18;
+pointer-events:none;
+z-index:-1;
+mix-blend-mode:screen
+}
+
+body:before{
+background:#3b82f6;
+top:-90px;
+left:-120px;
+animation:lightOne 11s ease-in-out infinite alternate
+}
+
+body:after{
+background:#a855f7;
+right:-130px;
+bottom:-100px;
+animation:lightTwo 13s ease-in-out infinite alternate
+}
+
+@keyframes lightOne{
+0%{transform:translate(-30px,20px) scale(.85)}
+35%{transform:translate(180px,100px) scale(1.15)}
+70%{transform:translate(80px,300px) scale(1.05)}
+100%{transform:translate(360px,120px) scale(1.25)}
+}
+
+@keyframes lightTwo{
+0%{transform:translate(40px,-30px) scale(1)}
+35%{transform:translate(-170px,-180px) scale(1.2)}
+70%{transform:translate(-40px,-300px) scale(.9)}
+100%{transform:translate(-280px,-80px) scale(1.25)}
+}
+
+.btn,
+.card,
+.logo,
+.hero-card,
+.trophy,
+.photo{
+transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease,background .28s ease
+}
+
+.btn:hover{
+color:#111;
+background:linear-gradient(90deg,var(--gold),#fff1a8);
+border-color:var(--gold);
+box-shadow:0 0 28px #e7b84b55;
+transform:translateY(-2px)
+}
+
+.btn:not(.primary):hover{
+color:var(--gold);
+background:var(--card2)
+}
+
+.card:hover,
+.trophy:hover,
+.photo:hover{
+border-color:#e7b84b66;
+box-shadow:0 0 30px #e7b84b18;
+transform:translateY(-3px)
+}
+
+.logo{
+animation:logoGlow 3s ease-in-out infinite alternate
+}
+
+@media(max-width:800px){
+.hero-grid,.news{grid-template-columns:1fr}
+.grid{grid-template-columns:1fr 1fr}
+.players{grid-template-columns:1fr 1fr}
+.gallery{grid-template-columns:1fr 1fr}
+nav{display:none}
+}
+
+@media(max-width:500px){
+.sound-toggle{
+left:10px;
+bottom:10px;
+font-size:12px
+}
+
+.hero h

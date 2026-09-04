@@ -6,7 +6,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CAPITAN FC | Official Website</title>
+/* CAPITAN FC - ANIMATED BLUE BACKGROUND */
 
+body{
+    background:
+        radial-gradient(circle at 15% 20%, rgba(70,140,255,.16), transparent 35%),
+        radial-gradient(circle at 85% 30%, rgba(90,170,255,.13), transparent 35%),
+        radial-gradient(circle at 50% 90%, rgba(40,110,255,.12), transparent 40%),
+        #080c14 !important;
+    background-size: 180% 180% !important;
+    animation: blueAurora 12s ease-in-out infinite alternate !important;
+}
+
+@keyframes blueAurora{
+    0%{
+        background-position: 0% 30%;
+    }
+    50%{
+        background-position: 100% 60%;
+    }
+    100%{
+        background-position: 20% 100%;
+    }
+}
 <style>
 
 :root{

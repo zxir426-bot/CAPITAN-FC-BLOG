@@ -173,4 +173,40 @@ body:after{background:#a855f7;right:-130px;bottom:-100px;animation:lightTwo 13s 
   }
 
   loadCapitanNews();
+
+async function showCapitanNews() {
+  const container = document.getElementById("newsContainer");
+
+  if (!container) return;
+
+  try {
+    const snapshot = await getDocs(collection(db, "news"));
+
+    container.innerHTML = "";
+
+    snapshot.forEach((doc) => {
+      const news = doc.data();
+
+      const card = document.createElement("article");
+      card.className = "card news-item";
+
+      card.innerHTML = `
+        <div class="news-card-head">
+          <span class="tag">${news.tag || "اخبار باشگاه"}</span>
+          <button class="like-btn" aria-label="لایک خبر">🤍</button>
+        </div>
+        <h3>${news.title || "بدون عنوان"}</h3>
+        <p>${news.text || ""}</p>
+      `;
+
+      container.appendChild(card);
+    });
+
+  } catch (error) {
+    console.error("❌ News display error:", error);
+  }
+}
+
+showCapitanNews();
+</script>
 </script></body></html>

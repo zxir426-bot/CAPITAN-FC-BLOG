@@ -160,4 +160,27 @@ body:after{background:#a855f7;right:-130px;bottom:-100px;animation:lightTwo 13s 
   };
 
   console.log("🔥 CAPITAN FC — Firebase connected successfully!");
+</script><script type="module">
+  import {
+    collection,
+    getDocs
+  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+  const db = window.CAPITAN_FIREBASE.db;
+
+  async function loadCapitanNews() {
+    try {
+      const snapshot = await getDocs(collection(db, "news"));
+
+      snapshot.forEach((doc) => {
+        console.log("📰 CAPITAN FC News:", doc.data());
+      });
+
+      console.log("✅ Firestore news loaded successfully!");
+    } catch (error) {
+      console.error("❌ Firestore error:", error);
+    }
+  }
+
+  loadCapitanNews();
 </script></body></html>

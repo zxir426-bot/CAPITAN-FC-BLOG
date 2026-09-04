@@ -130,4 +130,34 @@ body:after{background:#a855f7;right:-130px;bottom:-100px;animation:lightTwo 13s 
  const trophy=document.querySelector('#trophies'); if(trophy)trophy.addEventListener('click',()=>beep(880,.16,.035));
 })();
 </script>
-</body></html>
+<!-- CAPITAN FC — Firebase Connection -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+  import {
+    getFirestore
+  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCU2T7vWn2hNt32Ftnhg8Br0ahIWHzEGf0",
+    authDomain: "capitan-fc.firebaseapp.com",
+    projectId: "capitan-fc",
+    storageBucket: "capitan-fc.firebasestorage.app",
+    messagingSenderId: "826851160437",
+    appId: "1:826851160437:web:ea58daec932978b547a33c",
+    measurementId: "G-5V035YBGVQ"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+  // Initialize Cloud Firestore
+  const db = getFirestore(app);
+
+  // Make Firebase available to the rest of the site
+  window.CAPITAN_FIREBASE = {
+    app,
+    db
+  };
+
+  console.log("🔥 CAPITAN FC — Firebase connected successfully!");
+</script></body></html>

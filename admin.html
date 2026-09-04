@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAPITAN FC | Admin Panel</title>
+
+<style>
+:root{
+  --bg:#08090c;
+  --card:#11141a;
+  --card2:#171b22;
+  --text:#f5f7fa;
+  --muted:#9aa3af;
+  --gold:#e7b84b;
+  --line:#242a33;
+  --red:#ff4d5e;
+  --green:#35d07f;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  color:var(--text);
+  font-family:Tahoma,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%,rgba(59,130,246,.18),transparent 25%),
+    radial-gradient(circle at 85% 90%,rgba(168,85,247,.16),transparent 25%),
+    linear-gradient(135deg,#08090c,#101827,#0b1210);
+}
+
+.container{
+  width:min(850px,92%);
+  margin:40px auto;
+}
+
+.header{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.logo{
+  width:70px;
+  height:70px;
+  margin:0 auto 15px;
+  border:2px solid var(--gold);
+  border-radius:20px;
+  display:grid;
+  place-items:center;
+  color:var(--gold);
+  font-size:35px;
+  font-weight:900;
+  box-shadow:0 0 35px #e7b84b33;
+}
+
+.header h1{
+  margin:0;
+  font-size:30px;
+}
+
+.header p{
+  color:var(--muted);
+  margin:5px 0 0;
+}
+
+.card{
+  background:linear-gradient(180deg,var(--card2),var(--card));
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 20px 70px #0009;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:20px;
+}
+
+.badge{
+  color:var(--gold);
+  font-size:11px;
+  font-weight:900;
+}
+
+label{
+  display:block;
+  margin:18px 0 7px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:13px;
+  background:#0d1015;
+  color:var(--text);
+  font-family:inherit;
+  outline:none;
+  transition:.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px #e7b84b14;
+}
+
+textarea{
+  min-height:160px;
+  resize:vertical;
+}
+
+.publish{
+  width:100%;
+  margin-top:22px;
+  padding:14px;
+  border:0;
+  border-radius:12px;
+  background:var(--gold);
+  color:#111;
+  font-family:inherit;
+  font-size:16px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.publish:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 25px #e7b84b44;
+}
+
+.publish:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+  transform:none;
+}
+
+.status{
+  display:none;
+  margin-top:18px;
+  padding:13px;
+  border-radius:12px;
+  font-size:13px;
+  text-align:center;
+}
+
+.status.success{
+  display:block;
+  background:#35d07f14;
+  border:1px solid #35d07f44;
+  color:var(--green);
+}
+
+.status.error{
+  display:block;
+  background:#ff4d5e14;
+  border:1px solid #ff4d5e44;
+  color:var(--red);
+}
+
+.status.warning{
+  display:block;
+  background:#e7b84b14;
+  border:1px solid #e7b84b44;
+  color:var(--gold);
+}
+
+.home{
+  display:block;
+  margin-top:15px;
+  padding:12px;
+  text-align:center;
+  border:1px solid var(--line);
+  border-radius:12px;
+  color:var(--muted);
+  text-decoration:none;
+  transition:.2s;
+}
+
+.home:hover{
+  color:var(--gold);
+  border-color:var(--gold);
+}
+
+.footer{
+  text-align:center;
+  color:var(--muted);
+  font-size:11px;
+  margin-top:20px;
+}
+
+@media(max-width:500px){
+
+  .container{
+    margin:25px auto;
+  }
+
+  .card{
+    padding:20px;
+  }
+
+  .header h1{
+    font-size:25px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+
+    <div class="logo">C</div>
+
+    <h1>CAPITAN FC</h1>
+
+    <p>پنل مدیریت رسمی باشگاه</p>
+
+  </div>
+
+  <div class="card">
+
+    <div class="section-title">
+      <h2>📰 انتشار خبر جدید</h2>
+      <span class="badge">NEWS ADMIN</span>
+    </div>
+
+    <label for="title">عنوان خبر</label>
+
+    <input
+      id="title"
+      type="text"
+      placeholder="مثلاً: پیروزی بزرگ CAPITAN FC"
+    >
+
+    <label for="text">متن خبر</label>
+
+    <textarea
+      id="text"
+      placeholder="متن کامل خبر را اینجا بنویس..."
+    ></textarea>
+
+    <label for="tag">دسته‌بندی خبر</label>
+
+    <select id="tag">
+
+      <option value="NEWS">NEWS</option>
+
+      <option value="MATCH">MATCH</option>
+
+      <option value="OFFICIAL">OFFICIAL</option>
+
+      <option value="TRANSFER">TRANSFER</option>
+
+      <option value="ANNOUNCEMENT">ANNOUNCEMENT</option>
+
+    </select>
+
+    <button
+      class="publish"
+      id="publishButton"
+      type="button"
+    >
+      ➕ انتشار خبر
+    </button>
+
+    <div
+      id="status"
+      class="status"
+    ></div>
+
+    <a
+      class="home"
+      href="index.html"
+    >
+      ← بازگشت به سایت CAPITAN FC
+    </a>
+
+  </div>
+
+  <div class="footer">
+    CAPITAN FC • OFFICIAL ADMIN PANEL • 2026
+  </div>
+
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCU2T7vWn2hNt32Ftnhg8Br0ahIWHzEGf0",
+  authDomain: "capitan-fc.firebaseapp.com",
+  projectId: "capitan-fc",
+  storageBucket: "capitan-fc.firebasestorage.app",
+  messagingSenderId: "826851160437",
+  appId: "1:826851160437:web:ea58daec932978b547a33c",
+  measurementId: "G-5V035YBGVQ"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+const titleInput =
+  document.getElementById("title");
+
+const textInput =
+  document.getElementById("text");
+
+const tagInput =
+  document.getElementById("tag");
+
+const publishButton =
+  document.getElementById("publishButton");
+
+const statusBox =
+  document.getElementById("status");
+
+
+function showStatus(message,type){
+
+  statusBox.textContent = message;
+
+  statusBox.className =
+    "status " + type;
+
+}
+
+
+publishButton.addEventListener("click", async () => {
+
+  const title =
+    titleInput.value.trim();
+
+  const text =
+    textInput.value.trim();
+
+  const tag =
+    tagInput.value;
+
+
+  if(!title){
+
+    showStatus(
+      "⚠️ لطفاً عنوان خبر را وارد کن.",
+      "warning"
+    );
+
+    titleInput.focus();
+
+    return;
+  }
+
+
+  if(!text){
+
+    showStatus(
+      "⚠️ لطفاً متن خبر را وارد کن.",
+      "warning"
+    );
+
+    textInput.focus();
+
+    return;
+  }
+
+
+  publishButton.disabled = true;
+
+  publishButton.textContent =
+    "⏳ در حال انتشار...";
+
+
+  try{
+
+    await addDoc(
+      collection(db,"news"),
+      {
+        title: title,
+        text: text,
+        tag: tag,
+        createdAt: serverTimestamp()
+      }
+    );
+
+
+    showStatus(
+      "✅ خبر با موفقیت منتشر شد.",
+      "success"
+    );
+
+
+    titleInput.value = "";
+
+    textInput.value = "";
+
+    tagInput.value = "NEWS";
+
+
+  }catch(error){
+
+    console.error(
+      "Firestore Error:",
+      error
+    );
+
+    showStatus(
+      "❌ انتشار خبر انجام نشد. دسترسی Firestore را بررسی کن.",
+      "error"
+    );
+
+  }
+
+
+  publishButton.disabled = false;
+
+  publishButton.textContent =
+    "➕ انتشار خبر";
+
+});
+
+</script>
+
+</body>
+</html>

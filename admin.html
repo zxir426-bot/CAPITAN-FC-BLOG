@@ -16,6 +16,7 @@
   --line:#242a33;
   --red:#ff4d5e;
   --green:#35d07f;
+  --blue:#4da3ff;
 }
 
 *{
@@ -28,14 +29,14 @@ body{
   color:var(--text);
   font-family:Tahoma,Arial,sans-serif;
   background:
-    radial-gradient(circle at 15% 10%,rgba(59,130,246,.18),transparent 25%),
-    radial-gradient(circle at 85% 90%,rgba(168,85,247,.16),transparent 25%),
+    radial-gradient(circle at 10% 10%,rgba(59,130,246,.16),transparent 25%),
+    radial-gradient(circle at 90% 90%,rgba(168,85,247,.14),transparent 25%),
     linear-gradient(135deg,#08090c,#101827,#0b1210);
 }
 
 .container{
-  width:min(850px,92%);
-  margin:40px auto;
+  width:min(1050px,94%);
+  margin:30px auto;
 }
 
 .header{
@@ -46,7 +47,7 @@ body{
 .logo{
   width:70px;
   height:70px;
-  margin:0 auto 15px;
+  margin:0 auto 12px;
   border:2px solid var(--gold);
   border-radius:20px;
   display:grid;
@@ -67,12 +68,45 @@ body{
   margin:5px 0 0;
 }
 
+.tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+
+.tab{
+  border:1px solid var(--line);
+  background:var(--card);
+  color:var(--muted);
+  padding:11px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  font-family:inherit;
+  font-weight:bold;
+}
+
+.tab.active{
+  background:var(--gold);
+  color:#111;
+  border-color:var(--gold);
+}
+
+.panel{
+  display:none;
+}
+
+.panel.active{
+  display:block;
+}
+
 .card{
   background:linear-gradient(180deg,var(--card2),var(--card));
   border:1px solid var(--line);
   border-radius:20px;
-  padding:25px;
-  box-shadow:0 20px 70px #0009;
+  padding:22px;
+  margin-bottom:18px;
+  box-shadow:0 18px 60px #0007;
 }
 
 .section-title{
@@ -80,7 +114,7 @@ body{
   align-items:center;
   justify-content:space-between;
   gap:10px;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 .section-title h2{
@@ -96,7 +130,7 @@ body{
 
 label{
   display:block;
-  margin:18px 0 7px;
+  margin:14px 0 7px;
   font-size:13px;
   font-weight:bold;
 }
@@ -107,92 +141,160 @@ select{
   width:100%;
   border:1px solid var(--line);
   border-radius:12px;
-  padding:13px;
+  padding:12px;
   background:#0d1015;
   color:var(--text);
   font-family:inherit;
   outline:none;
-  transition:.2s;
 }
 
 input:focus,
 textarea:focus,
 select:focus{
   border-color:var(--gold);
-  box-shadow:0 0 0 3px #e7b84b14;
 }
 
 textarea{
-  min-height:160px;
+  min-height:120px;
   resize:vertical;
 }
 
-.publish{
-  width:100%;
-  margin-top:22px;
-  padding:14px;
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+.actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+button{
+  font-family:inherit;
+  cursor:pointer;
+}
+
+.primary{
   border:0;
-  border-radius:12px;
   background:var(--gold);
   color:#111;
-  font-family:inherit;
-  font-size:16px;
+  padding:12px 18px;
+  border-radius:11px;
   font-weight:900;
-  cursor:pointer;
-  transition:.2s;
 }
 
-.publish:hover{
-  transform:translateY(-2px);
-  box-shadow:0 0 25px #e7b84b44;
+.secondary{
+  border:1px solid var(--line);
+  background:var(--card2);
+  color:var(--text);
+  padding:12px 18px;
+  border-radius:11px;
+  font-weight:bold;
 }
 
-.publish:disabled{
-  opacity:.6;
-  cursor:not-allowed;
-  transform:none;
+.danger{
+  border:1px solid #ff4d5e55;
+  background:#ff4d5e12;
+  color:var(--red);
+  padding:9px 12px;
+  border-radius:9px;
+  font-weight:bold;
+}
+
+.edit{
+  border:1px solid #4da3ff55;
+  background:#4da3ff12;
+  color:var(--blue);
+  padding:9px 12px;
+  border-radius:9px;
+  font-weight:bold;
+}
+
+.item{
+  border:1px solid var(--line);
+  background:#0d1015;
+  border-radius:15px;
+  padding:15px;
+  margin-top:10px;
+}
+
+.item-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+}
+
+.item h3{
+  margin:0 0 6px;
+  font-size:16px;
+}
+
+.item p{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  white-space:pre-wrap;
+}
+
+.item-actions{
+  display:flex;
+  gap:6px;
+  flex-shrink:0;
+}
+
+.empty{
+  text-align:center;
+  color:var(--muted);
+  padding:25px;
 }
 
 .status{
   display:none;
-  margin-top:18px;
+  margin-bottom:18px;
   padding:13px;
   border-radius:12px;
-  font-size:13px;
   text-align:center;
+  font-size:13px;
 }
 
 .status.success{
   display:block;
-  background:#35d07f14;
-  border:1px solid #35d07f44;
   color:var(--green);
+  background:#35d07f12;
+  border:1px solid #35d07f44;
 }
 
 .status.error{
   display:block;
-  background:#ff4d5e14;
-  border:1px solid #ff4d5e44;
   color:var(--red);
+  background:#ff4d5e12;
+  border:1px solid #ff4d5e44;
 }
 
 .status.warning{
   display:block;
-  background:#e7b84b14;
-  border:1px solid #e7b84b44;
   color:var(--gold);
+  background:#e7b84b12;
+  border:1px solid #e7b84b44;
 }
 
 .home{
   display:block;
-  margin-top:15px;
-  padding:12px;
   text-align:center;
+  padding:13px;
   border:1px solid var(--line);
   border-radius:12px;
   color:var(--muted);
   text-decoration:none;
-  transition:.2s;
+  margin-top:15px;
 }
 
 .home:hover{
@@ -200,27 +302,30 @@ textarea{
   border-color:var(--gold);
 }
 
-.footer{
-  text-align:center;
-  color:var(--muted);
-  font-size:11px;
-  margin-top:20px;
-}
-
-@media(max-width:500px){
-
-  .container{
-    margin:25px auto;
+@media(max-width:650px){
+  .form-grid{
+    grid-template-columns:1fr;
   }
 
-  .card{
-    padding:20px;
+  .full{
+    grid-column:auto;
+  }
+
+  .item-top{
+    flex-direction:column;
+  }
+
+  .item-actions{
+    width:100%;
+  }
+
+  .item-actions button{
+    flex:1;
   }
 
   .header h1{
     font-size:25px;
   }
-
 }
 </style>
 </head>
@@ -229,93 +334,410 @@ textarea{
 
 <div class="container">
 
-  <div class="header">
+<div class="header">
+  <div class="logo">C</div>
+  <h1>CAPITAN FC</h1>
+  <p>پنل مدیریت رسمی باشگاه</p>
+</div>
 
-    <div class="logo">C</div>
+<div id="status" class="status"></div>
 
-    <h1>CAPITAN FC</h1>
+<div class="tabs">
+  <button class="tab active" data-panel="newsPanel">📰 اخبار</button>
+  <button class="tab" data-panel="playersPanel">👥 بازیکنان</button>
+  <button class="tab" data-panel="matchesPanel">⚽ مسابقات</button>
+  <button class="tab" data-panel="trophiesPanel">🏆 افتخارات</button>
+  <button class="tab" data-panel="mediaPanel">🎥 رسانه</button>
+  <button class="tab" data-panel="historyPanel">📖 تاریخچه</button>
+  <button class="tab" data-panel="contactPanel">📢 ارتباط</button>
+</div>
 
-    <p>پنل مدیریت رسمی باشگاه</p>
 
-  </div>
+<!-- ================= NEWS ================= -->
 
-  <div class="card">
+<section id="newsPanel" class="panel active">
 
-    <div class="section-title">
-      <h2>📰 انتشار خبر جدید</h2>
-      <span class="badge">NEWS ADMIN</span>
-    </div>
+<div class="card">
 
-    <label for="title">عنوان خبر</label>
+<div class="section-title">
+<h2>📰 مدیریت اخبار</h2>
+<span class="badge">NEWS</span>
+</div>
 
-    <input
-      id="title"
-      type="text"
-      placeholder="مثلاً: پیروزی بزرگ CAPITAN FC"
-    >
+<div class="form-grid">
 
-    <label for="text">متن خبر</label>
+<div>
+<label>عنوان خبر</label>
+<input id="newsTitle" type="text" placeholder="عنوان خبر">
+</div>
 
-    <textarea
-      id="text"
-      placeholder="متن کامل خبر را اینجا بنویس..."
-    ></textarea>
+<div>
+<label>دسته‌بندی</label>
+<select id="newsTag">
+<option value="NEWS">NEWS</option>
+<option value="MATCH">MATCH</option>
+<option value="OFFICIAL">OFFICIAL</option>
+<option value="TRANSFER">TRANSFER</option>
+<option value="ANNOUNCEMENT">ANNOUNCEMENT</option>
+</select>
+</div>
 
-    <label for="tag">دسته‌بندی خبر</label>
-
-    <select id="tag">
-
-      <option value="NEWS">NEWS</option>
-
-      <option value="MATCH">MATCH</option>
-
-      <option value="OFFICIAL">OFFICIAL</option>
-
-      <option value="TRANSFER">TRANSFER</option>
-
-      <option value="ANNOUNCEMENT">ANNOUNCEMENT</option>
-
-    </select>
-
-    <button
-      class="publish"
-      id="publishButton"
-      type="button"
-    >
-      ➕ انتشار خبر
-    </button>
-
-    <div
-      id="status"
-      class="status"
-    ></div>
-
-    <a
-      class="home"
-      href="index.html"
-    >
-      ← بازگشت به سایت CAPITAN FC
-    </a>
-
-  </div>
-
-  <div class="footer">
-    CAPITAN FC • OFFICIAL ADMIN PANEL • 2026
-  </div>
+<div class="full">
+<label>متن خبر</label>
+<textarea id="newsText" placeholder="متن خبر"></textarea>
+</div>
 
 </div>
 
+<div class="actions">
+<button class="primary" id="saveNews">➕ افزودن خبر</button>
+<button class="secondary" id="cancelNews" style="display:none">لغو ویرایش</button>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="section-title">
+<h2>اخبار منتشرشده</h2>
+<span class="badge" id="newsCount">0</span>
+</div>
+
+<div id="newsList"></div>
+
+</div>
+
+</section>
+
+
+<!-- ================= PLAYERS ================= -->
+
+<section id="playersPanel" class="panel">
+
+<div class="card">
+
+<div class="section-title">
+<h2>👥 مدیریت بازیکنان</h2>
+<span class="badge">SQUAD</span>
+</div>
+
+<div class="form-grid">
+
+<div>
+<label>نام بازیکن</label>
+<input id="playerName" type="text" placeholder="مثلاً RASTIN">
+</div>
+
+<div>
+<label>شماره پیراهن</label>
+<input id="playerNumber" type="text" placeholder="مثلاً 7">
+</div>
+
+<div>
+<label>پست</label>
+<input id="playerPosition" type="text" placeholder="مثلاً FORWARD">
+</div>
+
+<div>
+<label>وضعیت</label>
+<select id="playerStatus">
+<option value="PLAYER">PLAYER</option>
+<option value="CAPTAIN">CAPTAIN</option>
+</select>
+</div>
+
+</div>
+
+<div class="actions">
+<button class="primary" id="savePlayer">➕ افزودن بازیکن</button>
+<button class="secondary" id="cancelPlayer" style="display:none">لغو ویرایش</button>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="section-title">
+<h2>بازیکنان فعلی</h2>
+<span class="badge" id="playerCount">0</span>
+</div>
+
+<div id="playersList"></div>
+
+</div>
+
+</section>
+
+
+<!-- ================= MATCHES ================= -->
+
+<section id="matchesPanel" class="panel">
+
+<div class="card">
+
+<div class="section-title">
+<h2>⚽ مدیریت مسابقات</h2>
+<span class="badge">MATCH CENTER</span>
+</div>
+
+<div class="form-grid">
+
+<div>
+<label>تیم ما</label>
+<input id="matchHome" type="text" value="CAPITAN FC">
+</div>
+
+<div>
+<label>تیم مقابل</label>
+<input id="matchAway" type="text" placeholder="نام تیم حریف">
+</div>
+
+<div>
+<label>نتیجه</label>
+<input id="matchScore" type="text" placeholder="مثلاً 3 - 1">
+</div>
+
+<div>
+<label>تاریخ</label>
+<input id="matchDate" type="text" placeholder="مثلاً 2026/09/04">
+</div>
+
+<div>
+<label>ساعت</label>
+<input id="matchTime" type="text" placeholder="مثلاً 21:30">
+</div>
+
+<div>
+<label>نوع مسابقه</label>
+<select id="matchType">
+<option value="UPCOMING">بازی بعدی</option>
+<option value="FINISHED">آخرین بازی</option>
+</select>
+</div>
+
+</div>
+
+<div class="actions">
+<button class="primary" id="saveMatch">➕ افزودن مسابقه</button>
+<button class="secondary" id="cancelMatch" style="display:none">لغو ویرایش</button>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="section-title">
+<h2>مسابقات</h2>
+<span class="badge" id="matchCount">0</span>
+</div>
+
+<div id="matchesList"></div>
+
+</div>
+
+</section>
+
+
+<!-- ================= TROPHIES ================= -->
+
+<section id="trophiesPanel" class="panel">
+
+<div class="card">
+
+<div class="section-title">
+<h2>🏆 مدیریت افتخارات</h2>
+<span class="badge">HONOURS</span>
+</div>
+
+<div class="form-grid">
+
+<div>
+<label>نام جام / افتخار</label>
+<input id="trophyName" type="text" placeholder="مثلاً NEXUS CUP">
+</div>
+
+<div>
+<label>نوع</label>
+<select id="trophyType">
+<option value="WIN">🥇 قهرمانی</option>
+<option value="SECOND">🥈 نایب‌قهرمانی</option>
+<option value="AWARD">🏅 جایزه فردی</option>
+</select>
+</div>
+
+<div class="full">
+<label>توضیحات</label>
+<textarea id="trophyText" placeholder="توضیحات افتخار"></textarea>
+</div>
+
+</div>
+
+<div class="actions">
+<button class="primary" id="saveTrophy">➕ افزودن افتخار</button>
+<button class="secondary" id="cancelTrophy" style="display:none">لغو ویرایش</button>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="section-title">
+<h2>افتخارات ثبت‌شده</h2>
+<span class="badge" id="trophyCount">0</span>
+</div>
+
+<div id="trophiesList"></div>
+
+</div>
+
+</section>
+
+
+<!-- ================= MEDIA ================= -->
+
+<section id="mediaPanel" class="panel">
+
+<div class="card">
+
+<div class="section-title">
+<h2>🎥 مدیریت رسانه</h2>
+<span class="badge">MEDIA</span>
+</div>
+
+<div class="form-grid">
+
+<div>
+<label>عنوان رسانه</label>
+<input id="mediaTitle" type="text" placeholder="مثلاً HIGHLIGHTS 01">
+</div>
+
+<div>
+<label>لینک</label>
+<input id="mediaUrl" type="url" placeholder="https://...">
+</div>
+
+</div>
+
+<div class="actions">
+<button class="primary" id="saveMedia">➕ افزودن رسانه</button>
+<button class="secondary" id="cancelMedia" style="display:none">لغو ویرایش</button>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="section-title">
+<h2>رسانه‌های ثبت‌شده</h2>
+<span class="badge" id="mediaCount">0</span>
+</div>
+
+<div id="mediaList"></div>
+
+</div>
+
+</section>
+
+
+<!-- ================= HISTORY ================= -->
+
+<section id="historyPanel" class="panel">
+
+<div class="card">
+
+<div class="section-title">
+<h2>📖 تاریخچه باشگاه</h2>
+<span class="badge">HISTORY</span>
+</div>
+
+<label>متن تاریخچه</label>
+
+<textarea id="historyText" style="min-height:220px"></textarea>
+
+<div class="actions">
+<button class="primary" id="saveHistory">
+💾 ذخیره تاریخچه
+</button>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contactPanel" class="panel">
+
+<div class="card">
+
+<div class="section-title">
+<h2>📢 ارتباط با باشگاه</h2>
+<span class="badge">CONTACT</span>
+</div>
+
+<label>لینک کانال تلگرام</label>
+
+<input
+id="telegramUrl"
+type="url"
+placeholder="https://t.me/..."
+>
+
+<label>آیدی مدیر</label>
+
+<input
+id="adminUsername"
+type="text"
+placeholder="@..."
+>
+
+<label>متن شرایط عضویت</label>
+
+<textarea
+id="joinText"
+style="min-height:220px"
+placeholder="شرایط حضور..."
+></textarea>
+
+<div class="actions">
+<button class="primary" id="saveContact">
+💾 ذخیره اطلاعات ارتباط
+</button>
+</div>
+
+</div>
+
+</section>
+
+
+<a class="home" href="index.html">
+← بازگشت به سایت CAPITAN FC
+</a>
+
+</div>
+
+
 <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
   getFirestore,
   collection,
   addDoc,
+  getDocs,
+  doc,
+  updateDoc,
+  deleteDoc,
+  setDoc,
   serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
+
+/* ================= FIREBASE ================= */
 
 const firebaseConfig = {
   apiKey: "AIzaSyCU2T7vWn2hNt32Ftnhg8Br0ahIWHzEGf0",
@@ -327,131 +749,1386 @@ const firebaseConfig = {
   measurementId: "G-5V035YBGVQ"
 };
 
-
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
 
-const titleInput =
-  document.getElementById("title");
+/* ================= HELPERS ================= */
 
-const textInput =
-  document.getElementById("text");
+const $ = id => document.getElementById(id);
 
-const tagInput =
-  document.getElementById("tag");
-
-const publishButton =
-  document.getElementById("publishButton");
-
-const statusBox =
-  document.getElementById("status");
+let editing = {
+  news:null,
+  player:null,
+  match:null,
+  trophy:null,
+  media:null
+};
 
 
-function showStatus(message,type){
+function status(message,type="success"){
 
-  statusBox.textContent = message;
+  const box = $("status");
 
-  statusBox.className =
-    "status " + type;
+  box.textContent = message;
+
+  box.className = "status " + type;
+
+  setTimeout(()=>{
+    box.className = "status";
+  },4000);
 
 }
 
 
-publishButton.addEventListener("click", async () => {
+function escapeHtml(value){
 
-  const title =
-    titleInput.value.trim();
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
-  const text =
-    textInput.value.trim();
-
-  const tag =
-    tagInput.value;
-
-
-  if(!title){
-
-    showStatus(
-      "⚠️ لطفاً عنوان خبر را وارد کن.",
-      "warning"
-    );
-
-    titleInput.focus();
-
-    return;
-  }
+}
 
 
-  if(!text){
+/* ================= TABS ================= */
 
-    showStatus(
-      "⚠️ لطفاً متن خبر را وارد کن.",
-      "warning"
-    );
+document.querySelectorAll(".tab").forEach(tab=>{
 
-    textInput.focus();
+  tab.addEventListener("click",()=>{
 
-    return;
-  }
+    document.querySelectorAll(".tab")
+      .forEach(x=>x.classList.remove("active"));
+
+    document.querySelectorAll(".panel")
+      .forEach(x=>x.classList.remove("active"));
+
+    tab.classList.add("active");
+
+    $(tab.dataset.panel)
+      .classList.add("active");
+
+  });
+
+});
 
 
-  publishButton.disabled = true;
+/* ================= GENERIC DELETE ================= */
 
-  publishButton.textContent =
-    "⏳ در حال انتشار...";
+async function removeItem(collectionName,id){
 
+  if(!confirm("آیا از حذف این مورد مطمئنی؟")) return;
 
   try{
 
-    await addDoc(
-      collection(db,"news"),
-      {
-        title: title,
-        text: text,
-        tag: tag,
-        createdAt: serverTimestamp()
-      }
+    await deleteDoc(
+      doc(db,collectionName,id)
     );
 
+    status("✅ با موفقیت حذف شد.");
 
-    showStatus(
-      "✅ خبر با موفقیت منتشر شد.",
-      "success"
-    );
-
-
-    titleInput.value = "";
-
-    textInput.value = "";
-
-    tagInput.value = "NEWS";
-
+    await loadAll();
 
   }catch(error){
 
-    console.error(
-      "Firestore Error:",
-      error
-    );
+    console.error(error);
 
-    showStatus(
-      "❌ انتشار خبر انجام نشد. دسترسی Firestore را بررسی کن.",
+    status(
+      "❌ حذف انجام نشد.",
       "error"
     );
 
   }
 
+}
 
-  publishButton.disabled = false;
 
-  publishButton.textContent =
-    "➕ انتشار خبر";
+/* ================= NEWS ================= */
+
+async function loadNews(){
+
+  const list = $("newsList");
+
+  list.innerHTML =
+    '<div class="empty">⏳ در حال بارگذاری...</div>';
+
+  const snapshot =
+    await getDocs(collection(db,"news"));
+
+  $("newsCount").textContent =
+    snapshot.size;
+
+  if(snapshot.empty){
+
+    list.innerHTML =
+      '<div class="empty">هنوز خبری ثبت نشده است.</div>';
+
+    return;
+
+  }
+
+  list.innerHTML = "";
+
+  snapshot.forEach(item=>{
+
+    const data = item.data();
+
+    list.innerHTML += `
+      <div class="item">
+
+        <div class="item-top">
+
+          <div>
+
+            <h3>
+              ${escapeHtml(data.title || "بدون عنوان")}
+            </h3>
+
+            <p>
+              ${escapeHtml(data.text || "")}
+            </p>
+
+            <small style="color:var(--gold)">
+              ${escapeHtml(data.tag || "NEWS")}
+            </small>
+
+          </div>
+
+          <div class="item-actions">
+
+            <button
+              class="edit"
+              onclick="editNews('${item.id}')"
+            >
+              ✏️ ویرایش
+            </button>
+
+            <button
+              class="danger"
+              onclick="deleteNews('${item.id}')"
+            >
+              🗑️ حذف
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    `;
+
+  });
+
+}
+
+
+window.deleteNews =
+  id => removeItem("news",id);
+
+
+window.editNews = async id => {
+
+  const snapshot =
+    await getDocs(collection(db,"news"));
+
+  snapshot.forEach(item=>{
+
+    if(item.id === id){
+
+      const data = item.data();
+
+      $("newsTitle").value =
+        data.title || "";
+
+      $("newsText").value =
+        data.text || "";
+
+      $("newsTag").value =
+        data.tag || "NEWS";
+
+      editing.news = id;
+
+      $("saveNews").textContent =
+        "💾 ذخیره ویرایش";
+
+      $("cancelNews").style.display =
+        "inline-block";
+
+    }
+
+  });
+
+};
+
+
+$("saveNews").addEventListener("click",async()=>{
+
+  const title =
+    $("newsTitle").value.trim();
+
+  const text =
+    $("newsText").value.trim();
+
+  const tag =
+    $("newsTag").value;
+
+  if(!title || !text){
+
+    status(
+      "⚠️ عنوان و متن خبر الزامی است.",
+      "warning"
+    );
+
+    return;
+
+  }
+
+  try{
+
+    if(editing.news){
+
+      await updateDoc(
+        doc(db,"news",editing.news),
+        {
+          title,
+          text,
+          tag,
+          updatedAt:serverTimestamp()
+        }
+      );
+
+      status("✅ خبر ویرایش شد.");
+
+    }else{
+
+      await addDoc(
+        collection(db,"news"),
+        {
+          title,
+          text,
+          tag,
+          createdAt:serverTimestamp()
+        }
+      );
+
+      status("✅ خبر اضافه شد.");
+
+    }
+
+    resetNews();
+
+    await loadNews();
+
+  }catch(error){
+
+    console.error(error);
+
+    status(
+      "❌ عملیات خبر انجام نشد.",
+      "error"
+    );
+
+  }
 
 });
+
+
+function resetNews(){
+
+  $("newsTitle").value = "";
+
+  $("newsText").value = "";
+
+  $("newsTag").value = "NEWS";
+
+  editing.news = null;
+
+  $("saveNews").textContent =
+    "➕ افزودن خبر";
+
+  $("cancelNews").style.display =
+    "none";
+
+}
+
+
+$("cancelNews").addEventListener(
+  "click",
+  resetNews
+);
+
+
+/* ================= PLAYERS ================= */
+
+async function loadPlayers(){
+
+  const list = $("playersList");
+
+  const snapshot =
+    await getDocs(collection(db,"players"));
+
+  $("playerCount").textContent =
+    snapshot.size;
+
+  if(snapshot.empty){
+
+    list.innerHTML =
+      '<div class="empty">هنوز بازیکنی ثبت نشده است.</div>';
+
+    return;
+
+  }
+
+  list.innerHTML = "";
+
+  snapshot.forEach(item=>{
+
+    const data = item.data();
+
+    list.innerHTML += `
+      <div class="item">
+
+        <div class="item-top">
+
+          <div>
+
+            <h3>
+              ${escapeHtml(data.name || "")}
+            </h3>
+
+            <p>
+              شماره: ${escapeHtml(data.number || "-")}
+              <br>
+              پست: ${escapeHtml(data.position || "-")}
+              <br>
+              وضعیت: ${escapeHtml(data.status || "PLAYER")}
+            </p>
+
+          </div>
+
+          <div class="item-actions">
+
+            <button
+              class="edit"
+              onclick="editPlayer('${item.id}')"
+            >
+              ✏️ ویرایش
+            </button>
+
+            <button
+              class="danger"
+              onclick="deletePlayer('${item.id}')"
+            >
+              🗑️ حذف
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    `;
+
+  });
+
+}
+
+
+window.deletePlayer =
+  id => removeItem("players",id);
+
+
+window.editPlayer = async id => {
+
+  const snapshot =
+    await getDocs(collection(db,"players"));
+
+  snapshot.forEach(item=>{
+
+    if(item.id === id){
+
+      const data = item.data();
+
+      $("playerName").value =
+        data.name || "";
+
+      $("playerNumber").value =
+        data.number || "";
+
+      $("playerPosition").value =
+        data.position || "";
+
+      $("playerStatus").value =
+        data.status || "PLAYER";
+
+      editing.player = id;
+
+      $("savePlayer").textContent =
+        "💾 ذخیره ویرایش";
+
+      $("cancelPlayer").style.display =
+        "inline-block";
+
+    }
+
+  });
+
+};
+
+
+$("savePlayer").addEventListener(
+  "click",
+  async()=>{
+
+    const name =
+      $("playerName").value.trim();
+
+    const number =
+      $("playerNumber").value.trim();
+
+    const position =
+      $("playerPosition").value.trim();
+
+    const playerStatus =
+      $("playerStatus").value;
+
+    if(!name){
+
+      status(
+        "⚠️ نام بازیکن الزامی است.",
+        "warning"
+      );
+
+      return;
+
+    }
+
+    try{
+
+      const data = {
+        name,
+        number,
+        position,
+        status:playerStatus
+      };
+
+      if(editing.player){
+
+        await updateDoc(
+          doc(db,"players",editing.player),
+          data
+        );
+
+        status("✅ بازیکن ویرایش شد.");
+
+      }else{
+
+        await addDoc(
+          collection(db,"players"),
+          data
+        );
+
+        status("✅ بازیکن اضافه شد.");
+
+      }
+
+      resetPlayer();
+
+      await loadPlayers();
+
+    }catch(error){
+
+      console.error(error);
+
+      status(
+        "❌ عملیات بازیکن انجام نشد.",
+        "error"
+      );
+
+    }
+
+  }
+);
+
+
+function resetPlayer(){
+
+  $("playerName").value = "";
+
+  $("playerNumber").value = "";
+
+  $("playerPosition").value = "";
+
+  $("playerStatus").value =
+    "PLAYER";
+
+  editing.player = null;
+
+  $("savePlayer").textContent =
+    "➕ افزودن بازیکن";
+
+  $("cancelPlayer").style.display =
+    "none";
+
+}
+
+
+$("cancelPlayer").addEventListener(
+  "click",
+  resetPlayer
+);
+
+
+/* ================= MATCHES ================= */
+
+async function loadMatches(){
+
+  const list = $("matchesList");
+
+  const snapshot =
+    await getDocs(collection(db,"matches"));
+
+  $("matchCount").textContent =
+    snapshot.size;
+
+  if(snapshot.empty){
+
+    list.innerHTML =
+      '<div class="empty">هنوز مسابقه‌ای ثبت نشده است.</div>';
+
+    return;
+
+  }
+
+  list.innerHTML = "";
+
+  snapshot.forEach(item=>{
+
+    const data = item.data();
+
+    list.innerHTML += `
+      <div class="item">
+
+        <div class="item-top">
+
+          <div>
+
+            <h3>
+              ${escapeHtml(data.home || "CAPITAN FC")}
+              vs
+              ${escapeHtml(data.away || "-")}
+            </h3>
+
+            <p>
+              نتیجه: ${escapeHtml(data.score || "-")}
+              <br>
+              تاریخ: ${escapeHtml(data.date || "-")}
+              <br>
+              ساعت: ${escapeHtml(data.time || "-")}
+              <br>
+              نوع: ${data.type === "FINISHED" ? "آخرین بازی" : "بازی بعدی"}
+            </p>
+
+          </div>
+
+          <div class="item-actions">
+
+            <button
+              class="edit"
+              onclick="editMatch('${item.id}')"
+            >
+              ✏️ ویرایش
+            </button>
+
+            <button
+              class="danger"
+              onclick="deleteMatch('${item.id}')"
+            >
+              🗑️ حذف
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    `;
+
+  });
+
+}
+
+
+window.deleteMatch =
+  id => removeItem("matches",id);
+
+
+window.editMatch = async id => {
+
+  const snapshot =
+    await getDocs(collection(db,"matches"));
+
+  snapshot.forEach(item=>{
+
+    if(item.id === id){
+
+      const data = item.data();
+
+      $("matchHome").value =
+        data.home || "CAPITAN FC";
+
+      $("matchAway").value =
+        data.away || "";
+
+      $("matchScore").value =
+        data.score || "";
+
+      $("matchDate").value =
+        data.date || "";
+
+      $("matchTime").value =
+        data.time || "";
+
+      $("matchType").value =
+        data.type || "UPCOMING";
+
+      editing.match = id;
+
+      $("saveMatch").textContent =
+        "💾 ذخیره ویرایش";
+
+      $("cancelMatch").style.display =
+        "inline-block";
+
+    }
+
+  });
+
+};
+
+
+$("saveMatch").addEventListener(
+  "click",
+  async()=>{
+
+    const home =
+      $("matchHome").value.trim();
+
+    const away =
+      $("matchAway").value.trim();
+
+    const score =
+      $("matchScore").value.trim();
+
+    const date =
+      $("matchDate").value.trim();
+
+    const time =
+      $("matchTime").value.trim();
+
+    const type =
+      $("matchType").value;
+
+    if(!away){
+
+      status(
+        "⚠️ نام تیم مقابل الزامی است.",
+        "warning"
+      );
+
+      return;
+
+    }
+
+    try{
+
+      const data = {
+        home,
+        away,
+        score,
+        date,
+        time,
+        type
+      };
+
+      if(editing.match){
+
+        await updateDoc(
+          doc(db,"matches",editing.match),
+          data
+        );
+
+        status("✅ مسابقه ویرایش شد.");
+
+      }else{
+
+        await addDoc(
+          collection(db,"matches"),
+          data
+        );
+
+        status("✅ مسابقه اضافه شد.");
+
+      }
+
+      resetMatch();
+
+      await loadMatches();
+
+    }catch(error){
+
+      console.error(error);
+
+      status(
+        "❌ عملیات مسابقه انجام نشد.",
+        "error"
+      );
+
+    }
+
+  }
+);
+
+
+function resetMatch(){
+
+  $("matchHome").value =
+    "CAPITAN FC";
+
+  $("matchAway").value = "";
+
+  $("matchScore").value = "";
+
+  $("matchDate").value = "";
+
+  $("matchTime").value = "";
+
+  $("matchType").value =
+    "UPCOMING";
+
+  editing.match = null;
+
+  $("saveMatch").textContent =
+    "➕ افزودن مسابقه";
+
+  $("cancelMatch").style.display =
+    "none";
+
+}
+
+
+$("cancelMatch").addEventListener(
+  "click",
+  resetMatch
+);
+
+
+/* ================= TROPHIES ================= */
+
+async function loadTrophies(){
+
+  const list = $("trophiesList");
+
+  const snapshot =
+    await getDocs(collection(db,"trophies"));
+
+  $("trophyCount").textContent =
+    snapshot.size;
+
+  if(snapshot.empty){
+
+    list.innerHTML =
+      '<div class="empty">هنوز افتخاری ثبت نشده است.</div>';
+
+    return;
+
+  }
+
+  list.innerHTML = "";
+
+  snapshot.forEach(item=>{
+
+    const data = item.data();
+
+    const icon =
+      data.type === "SECOND"
+      ? "🥈"
+      : data.type === "AWARD"
+      ? "🏅"
+      : "🥇";
+
+    list.innerHTML += `
+      <div class="item">
+
+        <div class="item-top">
+
+          <div>
+
+            <h3>
+              ${icon}
+              ${escapeHtml(data.name || "")}
+            </h3>
+
+            <p>
+              ${escapeHtml(data.text || "")}
+            </p>
+
+          </div>
+
+          <div class="item-actions">
+
+            <button
+              class="edit"
+              onclick="editTrophy('${item.id}')"
+            >
+              ✏️ ویرایش
+            </button>
+
+            <button
+              class="danger"
+              onclick="deleteTrophy('${item.id}')"
+            >
+              🗑️ حذف
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    `;
+
+  });
+
+}
+
+
+window.deleteTrophy =
+  id => removeItem("trophies",id);
+
+
+window.editTrophy = async id => {
+
+  const snapshot =
+    await getDocs(collection(db,"trophies"));
+
+  snapshot.forEach(item=>{
+
+    if(item.id === id){
+
+      const data = item.data();
+
+      $("trophyName").value =
+        data.name || "";
+
+      $("trophyText").value =
+        data.text || "";
+
+      $("trophyType").value =
+        data.type || "WIN";
+
+      editing.trophy = id;
+
+      $("saveTrophy").textContent =
+        "💾 ذخیره ویرایش";
+
+      $("cancelTrophy").style.display =
+        "inline-block";
+
+    }
+
+  });
+
+};
+
+
+$("saveTrophy").addEventListener(
+  "click",
+  async()=>{
+
+    const name =
+      $("trophyName").value.trim();
+
+    const text =
+      $("trophyText").value.trim();
+
+    const type =
+      $("trophyType").value;
+
+    if(!name){
+
+      status(
+        "⚠️ نام افتخار الزامی است.",
+        "warning"
+      );
+
+      return;
+
+    }
+
+    try{
+
+      const data = {
+        name,
+        text,
+        type
+      };
+
+      if(editing.trophy){
+
+        await updateDoc(
+          doc(db,"trophies",editing.trophy),
+          data
+        );
+
+        status("✅ افتخار ویرایش شد.");
+
+      }else{
+
+        await addDoc(
+          collection(db,"trophies"),
+          data
+        );
+
+        status("✅ افتخار اضافه شد.");
+
+      }
+
+      resetTrophy();
+
+      await loadTrophies();
+
+    }catch(error){
+
+      console.error(error);
+
+      status(
+        "❌ عملیات افتخار انجام نشد.",
+        "error"
+      );
+
+    }
+
+  }
+);
+
+
+function resetTrophy(){
+
+  $("trophyName").value = "";
+
+  $("trophyText").value = "";
+
+  $("trophyType").value =
+    "WIN";
+
+  editing.trophy = null;
+
+  $("saveTrophy").textContent =
+    "➕ افزودن افتخار";
+
+  $("cancelTrophy").style.display =
+    "none";
+
+}
+
+
+$("cancelTrophy").addEventListener(
+  "click",
+  resetTrophy
+);
+
+
+/* ================= MEDIA ================= */
+
+async function loadMedia(){
+
+  const list = $("mediaList");
+
+  const snapshot =
+    await getDocs(collection(db,"media"));
+
+  $("mediaCount").textContent =
+    snapshot.size;
+
+  if(snapshot.empty){
+
+    list.innerHTML =
+      '<div class="empty">هنوز رسانه‌ای ثبت نشده است.</div>';
+
+    return;
+
+  }
+
+  list.innerHTML = "";
+
+  snapshot.forEach(item=>{
+
+    const data = item.data();
+
+    list.innerHTML += `
+      <div class="item">
+
+        <div class="item-top">
+
+          <div>
+
+            <h3>
+              🎥 ${escapeHtml(data.title || "")}
+            </h3>
+
+            <p>
+              ${escapeHtml(data.url || "")}
+            </p>
+
+          </div>
+
+          <div class="item-actions">
+
+            <button
+              class="edit"
+              onclick="editMedia('${item.id}')"
+            >
+              ✏️ ویرایش
+            </button>
+
+            <button
+              class="danger"
+              onclick="deleteMedia('${item.id}')"
+            >
+              🗑️ حذف
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    `;
+
+  });
+
+}
+
+
+window.deleteMedia =
+  id => removeItem("media",id);
+
+
+window.editMedia = async id => {
+
+  const snapshot =
+    await getDocs(collection(db,"media"));
+
+  snapshot.forEach(item=>{
+
+    if(item.id === id){
+
+      const data = item.data();
+
+      $("mediaTitle").value =
+        data.title || "";
+
+      $("mediaUrl").value =
+        data.url || "";
+
+      editing.media = id;
+
+      $("saveMedia").textContent =
+        "💾 ذخیره ویرایش";
+
+      $("cancelMedia").style.display =
+        "inline-block";
+
+    }
+
+  });
+
+};
+
+
+$("saveMedia").addEventListener(
+  "click",
+  async()=>{
+
+    const title =
+      $("mediaTitle").value.trim();
+
+    const url =
+      $("mediaUrl").value.trim();
+
+    if(!title || !url){
+
+      status(
+        "⚠️ عنوان و لینک رسانه الزامی است.",
+        "warning"
+      );
+
+      return;
+
+    }
+
+    try{
+
+      const data = {
+        title,
+        url
+      };
+
+      if(editing.media){
+
+        await updateDoc(
+          doc(db,"media",editing.media),
+          data
+        );
+
+        status("✅ رسانه ویرایش شد.");
+
+      }else{
+
+        await addDoc(
+          collection(db,"media"),
+          data
+        );
+
+        status("✅ رسانه اضافه شد.");
+
+      }
+
+      resetMedia();
+
+      await loadMedia();
+
+    }catch(error){
+
+      console.error(error);
+
+      status(
+        "❌ عملیات رسانه انجام نشد.",
+        "error"
+      );
+
+    }
+
+  }
+);
+
+
+function resetMedia(){
+
+  $("mediaTitle").value = "";
+
+  $("mediaUrl").value = "";
+
+  editing.media = null;
+
+  $("saveMedia").textContent =
+    "➕ افزودن رسانه";
+
+  $("cancelMedia").style.display =
+    "none";
+
+}
+
+
+$("cancelMedia").addEventListener(
+  "click",
+  resetMedia
+);
+
+
+/* ================= HISTORY ================= */
+
+async function loadHistory(){
+
+  try{
+
+    const snapshot =
+      await getDocs(collection(db,"site"));
+
+    snapshot.forEach(item=>{
+
+      if(item.id === "history"){
+
+        $("historyText").value =
+          item.data().text || "";
+
+      }
+
+    });
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+
+}
+
+
+$("saveHistory").addEventListener(
+  "click",
+  async()=>{
+
+    const text =
+      $("historyText").value.trim();
+
+    if(!text){
+
+      status(
+        "⚠️ متن تاریخچه خالی است.",
+        "warning"
+      );
+
+      return;
+
+    }
+
+    try{
+
+      await setDoc(
+        doc(db,"site","history"),
+        {
+          text,
+          updatedAt:serverTimestamp()
+        }
+      );
+
+      status("✅ تاریخچه ذخیره شد.");
+
+    }catch(error){
+
+      console.error(error);
+
+      status(
+        "❌ ذخیره تاریخچه انجام نشد.",
+        "error"
+      );
+
+    }
+
+  }
+);
+
+
+/* ================= CONTACT ================= */
+
+async function loadContact(){
+
+  try{
+
+    const snapshot =
+      await getDocs(collection(db,"site"));
+
+    snapshot.forEach(item=>{
+
+      if(item.id === "contact"){
+
+        const data =
+          item.data();
+
+        $("telegramUrl").value =
+          data.telegramUrl || "";
+
+        $("adminUsername").value =
+          data.adminUsername || "";
+
+        $("joinText").value =
+          data.joinText || "";
+
+      }
+
+    });
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+
+}
+
+
+$("saveContact").addEventListener(
+  "click",
+  async()=>{
+
+    const telegramUrl =
+      $("telegramUrl").value.trim();
+
+    const adminUsername =
+      $("adminUsername").value.trim();
+
+    const joinText =
+      $("joinText").value.trim();
+
+    try{
+
+      await setDoc(
+        doc(db,"site","contact"),
+        {
+          telegramUrl,
+          adminUsername,
+          joinText,
+          updatedAt:serverTimestamp()
+        }
+      );
+
+      status(
+        "✅ اطلاعات ارتباط با باشگاه ذخیره شد."
+      );
+
+    }catch(error){
+
+      console.error(error);
+
+      status(
+        "❌ ذخیره اطلاعات انجام نشد.",
+        "error"
+      );
+
+    }
+
+  }
+);
+
+
+/* ================= LOAD ALL ================= */
+
+async function loadAll(){
+
+  try{
+
+    await Promise.all([
+      loadNews(),
+      loadPlayers(),
+      loadMatches(),
+      loadTrophies(),
+      loadMedia(),
+      loadHistory(),
+      loadContact()
+    ]);
+
+  }catch(error){
+
+    console.error(error);
+
+    status(
+      "❌ دریافت اطلاعات از Firebase با مشکل مواجه شد.",
+      "error"
+    );
+
+  }
+
+}
+
+
+loadAll();
 
 </script>
 
 </body>
-</html>
+  </html>

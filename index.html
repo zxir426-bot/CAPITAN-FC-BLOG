@@ -1036,6 +1036,56 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 
+// ===== CAPITAN FC FOLLOWERS =====
+
+const followBtn = document.getElementById("followBtn");
+const followerCount = document.getElementById("followerCount");
+
+let followerId = localStorage.getItem("capitanFollowerId");
+
+if (!followerId) {
+    followerId = crypto.randomUUID();
+}
+
+onSnapshot(collection(db, "followers"), (snapshot) => {
+    followerCount.textContent = snapshot.size;
+});
+
+if (localStorage.getItem("capitanFollowerId")) {
+    followBtn.textContent = "✅ شما دنبال می‌کنید";
+    followBtn.disabled = true;
+}
+
+followBtn.addEventListener("click", async () => {
+
+    try {
+
+        await setDoc(
+            doc(db, "followers", followerId),
+            {
+                createdAt: serverTimestamp()
+            }
+        );
+
+        localStorage.setItem("capitanFollowerId", followerId);
+
+        followBtn.textContent = "✅ شما دنبال می‌کنید";
+        followBtn.disabled = true;
+
+    } catch (error) {
+
+        console.error(error);
+        alert("❌ ثبت دنبال کردن انجام نشد.");
+
+    }
+
+});
+
+
+// ===== NEWS =====
+
+async function showCapitanNews(){
+
 async function showCapitanNews(){
 
     const container =
